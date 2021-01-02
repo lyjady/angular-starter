@@ -1,0 +1,12 @@
+<div class="alert-primary alert">{{ title }}</div>
+<!-- 事件绑定$event表示为原生的时间对象 -->
+<button class="btn btn-success" (click)="clickBtn($event, '点击了按钮')">点击</button><br/>
+<label>
+  <input (input)="inputEvent($event)" />
+</label>
+<!-- 阻止冒泡, 与原生的一样 -->
+<div (click)="clickParent()" style="width: 200px; height: 200px; background-color: aqua">
+  <div (click)="clickChild($event)" style="width: 100px; height: 100px; background-color: bisque"></div>
+</div>
+<!-- 阻止默认行为 -->
+<a (click)="$event.defaultPrevented" href="https://www.baidu.com" target="_blank">百度</a>

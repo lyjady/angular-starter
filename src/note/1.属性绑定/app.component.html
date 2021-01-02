@@ -1,0 +1,57 @@
+<!-- 用法与Vue一致, 不再赘述 -->
+<h3>插值表达式</h3>
+<div class="alert alert-primary">{{ title }}</div>
+<div>{{ gender === 1 ? '男' : '女' }}</div>
+<hr/>
+<!-- 属性绑定 -->
+<a [href]="href">Google</a><br/>
+<img [src]="imageUrl" alt="toptoon"/>
+<img bind-src="imageUrl" alt="top"/>
+<img src="{{ imageUrl }}" alt="top">
+<img [attr.src]="imageUrl" alt="top"/><br/>
+<!-- 自定义属性, 自定义属性必须要加上attr.的前缀 -->
+<span [attr.data-index]="index">自定义属性</span>
+<hr />
+<!-- 使用class添加样式 -->
+<h3>class添加样式</h3>
+<h4>绑定单个class</h4>
+<!-- 根据表达式的值来确定是否加入该class, 若非boolean类型则会转成boolean类型 -->
+<button class="btn" [class.btn-primary]="isPrimary">按钮</button>
+<button class="btn" [class.btn-primary]="1">按钮</button>
+<button class="btn" [class.btn-primary]="null">按钮</button>
+<button class="btn" [class.btn-primary]="0">按钮</button>
+<button class="btn" [class.btn-primary]="''">按钮</button>
+<h4>绑定多个class</h4>
+<!-- 绑定多个class, 可以是字符串、数组、对象 -->
+<div [class]="multiClassNameString">Alert</div>
+<div [class]="multiClassNameArray">Alert</div>
+<!--
+  对象写法
+  multiClassNameObject = {
+    alert: true,
+    'alert-primary': true
+  };
+-->
+<div [class]="multiClassNameObject">Alert</div>
+<hr />
+<h3>style添加样式</h3>
+<h4>添加单个style</h4>
+<!-- [style.指定的样式名字] = 样式的值, 如果样式带有单位不能省略单位必须写成字符串的形式 -->
+<div [style.background-color]="'red'" [style.width]="'100px'" [style.height]="'100px'"></div>
+<!-- 如果不想将带单位的样式值写成字符串的形式那么需要写成[style.指定的样式名字.单位]这样的形式 -->
+<p [style.color]="'skyblue'" [style.font-size.px]="10">
+  一个公民的政治自由是一种心境的平安状态，这种心境的平安状态是从人人认为它本身是安全的这个角度出发的，要想享有这种自由就必须建立这样一种政府---在它的统治下一个公民不惧怕另一个公民。
+</p>
+<h4>添加多个样式, 可以写成字符串、数组、对象</h4>
+<div [style]="multiStyleString"></div>
+<div [style]="multiStyleArray"></div>
+<!--
+  对象写法
+  multiStyleObject = {
+    backgroundColor: 'red',
+    width: '200px',
+    height: '200px',
+    'border-top': '5px solid blue'
+  };
+-->
+<div [style]="multiStyleObject"></div>
