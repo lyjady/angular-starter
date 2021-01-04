@@ -1,0 +1,27 @@
+<!-- 表单数据的双向绑定 -->
+<label>
+  <input [value]="value" (input)="value = ($event).target.value" /><br/>
+  <span>Input value : {{ value }}</span>
+</label>
+<br/>
+<!-- 上面的写法就是将value绑定给输入框, 触发输入输入事件将输入的值赋值给变量value -->
+<!-- 可简写为下面的写法 -->
+<label>
+  <input type="text" [(ngModel)]="value" /><br/>
+  <span>Input value : {{ value }}</span>
+</label>
+<!-- 表单中的数据双向绑定 -->
+<!-- 在form内对表单项进行数据双向绑定需要设置name属性, 或者配置[ngModelOptions]="{standalone: true} -->
+<form>
+  <label>
+    <input name="name" [(ngModel)]="value" />
+    <br/>
+    <span>Input value : {{ value }}</span>
+  </label><br/>
+  <label>
+    <input [(ngModel)]="value" [ngModelOptions]="{standalone: true}" />
+    <br/>
+    <span>Input value : {{ value }}</span>
+  </label>
+</form>
+

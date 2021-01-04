@@ -1,0 +1,14 @@
+<button class="btn btn-primary rounded" size="small" (click)="changeVisible()">切换</button>
+<button class="btn btn-primary rounded" size="small" (click)="setTitle()">重置</button>
+<button class="btn btn-primary rounded" size="small" (click)="setCancelText()">重置确定</button>
+<div [style.display]="isVisible === true ? 'block' : 'none'" class="card" style="width: 18rem;">
+  <img style="width: 280px;height: 180px;" src="../../../assets/images/toptoon.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ title }}</h5>
+    <p class="card-text">{{ content }}</p>
+    <a href="#" class="btn btn-primary">{{ confirmText }}</a>
+  </div>
+</div>
+<button class="btn btn-info" (click)="inc()">增加</button>
+<button class="btn btn-info" (click)="dec()">减少</button>
+<span [style.font-size.px]="fontSize">这是一段文字</span>

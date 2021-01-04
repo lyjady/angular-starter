@@ -1,0 +1,80 @@
+<!-- 类似于v-if, *属于结构性指令会改变Dom结构, []属于命令性指令不会改变Dom结构 -->
+<button class="btn btn-outline-primary" (click)="ifVisible = !ifVisible">Toggle</button>
+<!-- else则引用名为elseBlock的ng模板 -->
+<div class="alert alert-success" *ngIf="ifVisible else elseBlock">
+  success
+</div>
+<!-- 该ng模板的引用为elseBlock -->
+<ng-template #elseBlock>
+  <div class="alert alert-primary">
+    primary
+  </div>
+</ng-template>
+<!-- 下面是ngIF的完整写法, 上面的是语法糖 -->
+<ng-template [ngIf]="ifVisible">
+  <div class="alert alert-danger">
+    ngIF完整写法
+  </div>
+</ng-template>
+
+<!--ngIFThen-->
+<div *ngIf="ifVisible; then then else elseThen"></div>
+<ng-template #then>
+  <div class="alert alert-primary">
+    ngIfThen
+  </div>
+</ng-template>
+<ng-template #elseThen>
+  <div class="alert alert-info">
+    ngIfThen
+  </div>
+</ng-template>
+
+<div class="alert alert-primary" *ngIf="ifVisible else componentRef">
+  引用组件变量
+</div>
+<!-- 上面中else或者then后面跟着的变量都是模板内的引用, 下面引用的变量将来自组件 -->
+<ng-template #firstTemplate>
+  <div class="alert alert-danger">
+    引用组件变量
+  </div>
+</ng-template>
+<hr>
+<!-- ngFor和ngSwitch -->
+<label>
+  <select (change)="switchValue = $event.target.value">
+    <option *ngFor="let hero of heroes; index as i" [value]="hero.name">{{ i + 1 }} - {{ hero.name }}</option>
+  </select>
+</label>
+<div [ngSwitch]="switchValue">
+  <div class="alert alert-primary" *ngSwitchCase="'泰兰德'">
+    您选择的是: 泰兰德
+  </div>
+  <div class="alert alert-primary" *ngSwitchCase="'希尔瓦娜斯'">
+    您选择的是: 希尔瓦娜斯
+  </div>
+  <div class="alert alert-primary" *ngSwitchCase="'吉安娜'">
+    您选择的是: 吉安娜
+  </div>
+  <div class="alert alert-primary" *ngSwitchCase="'奥妮克希亚'">
+    您选择的是: 奥妮克希亚
+  </div>
+  <div *ngSwitchDefault class="alert-warning alert">你没有做任何选择</div>
+</div>
+<input [(ngModel)]="switchValue" (keyup.enter)="pushHero()"/>
+<button class="btn btn-outline-primary" (click)="pushHero()">添加</button>
+<button class="btn btn-outline-primary" (click)="reset()">重置</button>
+<ul>
+  <!-- ngFor提供的变量, trackBy设置迭代元素的key -->
+  <li *ngFor="let hero of heroes; index as i count as c;let ev = even; let od = odd; let f = first; let l = last;trackBy: trackByHero">
+    <div [style.color]="ev ? 'blue' : 'red'">
+      <span>总数: {{ c }}</span>
+      <span>索引: {{ i }}</span>
+      <span>奇数: {{ ev }}</span>
+      <span>偶数: {{ od }}</span>
+      <span>第一: {{ f }}</span>
+      <span>最后: {{ l }}</span>
+      <span>{{ hero.name }}</span>
+    </div>
+  </li>
+</ul>
