@@ -4,14 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-import { HighlightDirective } from './directive/highlight.directive';
-import { CustomDirectiveComponent } from './components/custom-directive/custom-directive.component';
+import { TransferPanelComponent } from './components/transfer-panel/transfer-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HighlightDirective,
-    CustomDirectiveComponent,
+    TransferPanelComponent,
   ],
   imports: [
     BrowserModule,

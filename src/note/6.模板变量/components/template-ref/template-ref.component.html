@@ -1,0 +1,6 @@
+<!-- 模板引用变量 -->
+<!-- 为html元素设置模板变量那么变量对应的值为该元素本身即$event.target -->
+<label>
+  <input style="margin-bottom: 5px" class="form-control" placeholder="请输入内容" #inputRef/>
+  <button class="btn btn-success btn-sm" (click)="inputBtnClick(inputRef)">输入框元素</button>
+</label>

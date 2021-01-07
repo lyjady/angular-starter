@@ -1,0 +1,5 @@
+<!-- 如果为组件设置模板变量那么变量就表示组件实例, 可以在使用模板变量调用组件实例的方法与变量 -->
+<app-template-ref #componentRef></app-template-ref>
+<br/>
+<button (click)="componentBtnClick(componentRef)" class="btn btn-primary btn-sm">组件按钮</button>
+<p>{{ componentRef.value }}</p>

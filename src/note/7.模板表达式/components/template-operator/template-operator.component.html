@@ -1,0 +1,21 @@
+<h4>模板运算符</h4>
+<h5>管道符类似于Linux中的管道符</h5>
+<p>{{ value }}</p>
+<!-- 将字符串转为大写 -->
+<p>uppercase: {{ value | uppercase }}</p>
+<!-- 转为小写 -->
+<p>lowercase: {{ value | lowercase }}</p>
+<!-- json管道 -->
+<p>{{ obj | json }}</p>
+<!-- 日期管道 -->
+<p>{{ now | date }}</p>
+<!-- 带格式的日期管道 -->
+<p>{{ now | date: 'yyyy-MM-dd hh:mm:ss' }}</p>
+<!-- Angular自定义的格式 -->
+<p>{{ now | date: 'longDate' }}</p>
+<!-- 安全导航运算符, 如果不确定变量是否有值可以使用?, 即使变量是null或者是undefined也不会报错 -->
+<!-- 等到变量有数据的时候会进行重新渲染, 类似于*ngIf, 但是*ngIf如果为false整个所在的标签与子标签将不会显示 -->
+<!-- 但是安全导航管道仅仅不会显示?修饰的变量 -->
+<p>
+  name: {{ hero?.name }}
+</p>
