@@ -1,0 +1,11 @@
+<p #pTag>view-child works!</p>
+<button class="btn btn-success btn-sm m-5" (click)="isShow = !isShow">toggle</button>
+<app-panel name="getByClass"></app-panel>
+<app-panel name="getByRefName" #component></app-panel>
+<app-panel name="getByRefName" *ngIf="isShow"></app-panel>
+<app-panel name="getByRefName"></app-panel>
+<app-panel name="getByRefName" #component></app-panel>
+<app-panel name="getByRefName"></app-panel>
+<app-panel name="getByRefName" #component></app-panel>
+<app-panel name="getByRefName"></app-panel>
+
