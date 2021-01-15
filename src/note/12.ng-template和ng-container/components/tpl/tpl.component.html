@@ -1,0 +1,40 @@
+<!-- ng-template除了搭配NgIf这样的结构化指令能显示之外, 还可以在ts代码逻辑中控制显示 -->
+<!-- 需要将ng-template生成一个内嵌的视图对象, 并将其插入到ng-container中 -->
+<!-- ng-template在ts代码中对应TemplateRef类, ng-container对应ViewContainerRef类 -->
+<!--
+  ViewRef还提供了move方法可以将ng-container里面指定的视图移动到指定的位置move(ViewRef: 指定的视图对象, index: 要移动的位置)
+  detach(index: 视图的索引) 将指定索引的视图从ng-container中抽离出来返回该视图对象， 抽离出来的视图对象可以进行相关的操作甚至可以插入到其他的ng-container中
+  这些API都是针对ViewRef中的由ng-template生成的视图对象, 包括length也是返回其中视图对象的数量
+  包括插入的索引也是针对视图对象而言的索引, 索引的计算也是从第一个视图对象开始的, 即使里面已经存在了Html元素, 但是该元素根本不存在索引, 只有插入了一个视图对象之后才有了开始有了长度viewRef.get(0)才能取到ViewRef
+-->
+<button class="btn btn-success btn-sm m-2" (click)="insert(secondTemplate)">插入第二个Template</button>
+<button class="btn btn-success btn-sm m-2" (click)="insertUnique()">插入唯一的Template</button>
+<button class="btn btn-success btn-sm m-2" (click)="getOne()">获取ViewRef</button>
+<button class="btn btn-success btn-sm m-2" (click)="detach()">抽离ViewRef</button>
+<button class="btn btn-success btn-sm m-2" (click)="length()">Length</button>
+<hr>
+<ng-template #firstTemplate>
+  <p>First Ng Template</p>
+</ng-template>
+<!-- 取到上下文中attr对应的值, 如果没有指定key那么默认取上下文中$implicit对应的值 -->
+<ng-template #secondTemplate let-at="attr" let-e>
+  <p>Second Ng Template -- at: {{ at }} -- e: {{ e }}</p>
+</ng-template>
+<ng-template #uniqueTemplate>
+  <p>Unique Ng Template</p>
+</ng-template>
+
+<ng-container #container>
+  <p>这里是NgContainer1</p>
+  <p>这里是NgContainer2</p>
+</ng-container>
+
+<hr>
+<!-- 除了以编码的方式将视图插入到容器之外还可以直接在模板中使用ngTemplateOutlet来将视图插入 -->
+<ng-container *ngTemplateOutlet="outletTemplate; context: {attr: 'abc', $implicit: 'default'}">
+
+</ng-container>
+
+<ng-template #outletTemplate let-attribute="attr" let-def>
+  <p>NgTemplateOutlet -- attr: {{ attribute }} -- def: {{ def }}</p>
+</ng-template>

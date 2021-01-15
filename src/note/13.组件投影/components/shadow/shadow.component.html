@@ -1,0 +1,7 @@
+<!-- 组件投影即作用域插槽, 使用ng-content将父组件在子组件标签内定义的内容显示出来 -->
+<!-- select是选择器和html的选择器一样将符合的内容显示在匹配的ng-content中 -->
+<div>
+  <ng-content select=".header"></ng-content>
+  <ng-content select=".body"></ng-content>
+  <ng-content select=".footer"></ng-content>
+</div>

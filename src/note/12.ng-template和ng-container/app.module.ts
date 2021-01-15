@@ -4,14 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-import { ViewChildComponent } from './components/view-child/view-child.component';
-import { PanelComponent } from './components/panel/panel.component';
+import { TplComponent } from './components/tpl/tpl.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewChildComponent,
-    PanelComponent,
+    TplComponent,
   ],
   imports: [
     BrowserModule,
