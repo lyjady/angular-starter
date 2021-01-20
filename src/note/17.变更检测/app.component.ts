@@ -6,6 +6,13 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Angular-Starter'
+
+  show = true
+
+  ngOnInit() {
+    setTimeout(() => this.title = 'ssss', 3000)
+  }
+
 }

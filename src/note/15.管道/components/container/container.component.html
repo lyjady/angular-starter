@@ -1,0 +1,20 @@
+<!-- 自定义管道 -->
+<section style="padding: 10px">
+  <!-- 当管道用到值发生变化时就会重新执行管道的transform方法 -->
+  <input class="form-control" style="width: 200px;" (input)="base = $event.target.value"/><br/>
+  <input class="form-control" style="width: 200px;" (input)="exponent = $event.target.value"/>
+  <p>base: {{ base }}</p>
+  <p>exponent: {{ exponent }}</p>
+  <p>{{ base | pow: exponent}}</p>
+</section>
+<hr>
+<!-- 但是如果是引用类型变量锁引用的对象的地址没有发生改变, 无法被管道监测到也就不会重新调用管道的transform方法 -->
+<!-- 默认的管道是纯管道, 只会监听值或者对象的地址会不会发生改变, 如果是基本数据类型则不受影响 -->
+<!-- 但是如果是引用数据类型, 仅仅是改变属性或者向数组内添加元素则不再次transform方法 -->
+<!-- 将@Pipe装饰器内的元数据的pure设置为false则管道就变成非纯管道那么会监听引用对象的改变, 改变属性或者向数组内添加元素会再次transform方法 -->
+<input class="form-control" style="width: 200px;"/><br/>
+<button class="btn btn-primary btn-sm" (click)="appendCanFlyAnimal()" (keyup.enter)="appendCanFlyAnimal()">追加</button>
+<ul>
+  <!-- 将不能飞的过滤掉 -->
+  <li *ngFor="let animal of animals | canFly; trackBy: trackBy">{{ animal.name }}</li>
+</ul>
