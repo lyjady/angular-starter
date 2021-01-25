@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-import { AlertComponent } from './components/alert/alert.component';
+import { StyleComponent } from './components/style/style.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent,
+    StyleComponent,
   ],
   imports: [
     BrowserModule,

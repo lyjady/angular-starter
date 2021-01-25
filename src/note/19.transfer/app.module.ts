@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-import { AlertComponent } from './components/alert/alert.component';
+import { TransferPanelComponent } from './components/transfer-panel/transfer-panel.component';
+import { TransferComponent } from './components/transfer/transfer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent,
+    TransferPanelComponent,
+    TransferComponent,
   ],
   imports: [
     BrowserModule,

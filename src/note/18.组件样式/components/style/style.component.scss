@@ -1,0 +1,9 @@
+// 当组件有template-host类时生效, 将模板内有sdd类的标签施加样式
+:host(.template-host) .sdd {
+  color: skyblue !important;
+  background: #007bff;
+}
+// 当该组件的某个祖先组件有theme-light类时, 将模板内有title类的标签施加样式
+:host-context(.theme-light) .title {
+  color: aqua !important;
+}
