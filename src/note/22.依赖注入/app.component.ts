@@ -6,8 +6,8 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title: 'Angular-Starter';
 
-  title = 'Angular-Starter'
-
-  constructor() {}
+  constructor() {
+  }
 }

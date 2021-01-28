@@ -1,0 +1,10 @@
+<!-- 使用其他模块的组件 -->
+<!--
+  由于Angular规定一个组件只能被一个模块使用,
+  所以另一个模块A里面的组件A想要使用另一个模块B的组件B(指令、管道)时
+  需要在模块A将模块B导入, 这样组件A才能使用组件B, 前提是模块B将组件B导出
+-->
+<app-big-one></app-big-one>
+<app-big-two></app-big-two>
+<app-small-one></app-small-one>
+<app-small-two></app-small-two>

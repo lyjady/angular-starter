@@ -1,4 +1,5 @@
 // 当组件有template-host类时生效, 将模板内有sdd类的标签施加样式
+// 如果没有后面的.sdd类那么就是给组件施加样式
 :host(.template-host) .sdd {
   color: skyblue !important;
   background: #007bff;
