@@ -19,6 +19,9 @@ import { PanelComponent } from './components/panel/panel.component';
     FormsModule
   ],
   providers: [],
+  exports: [
+    PanelComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
