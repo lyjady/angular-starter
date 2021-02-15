@@ -1,0 +1,9 @@
+<div class="autocomplete">
+  <label>
+    <input class="form-control" placeholder="search" #input />
+  </label>
+  <ul class="list-group mt-2">
+    {{ projects }}
+    <li *ngFor="let project of projects" class="list-group-item">{{ project }}</li>
+  </ul>
+</div>

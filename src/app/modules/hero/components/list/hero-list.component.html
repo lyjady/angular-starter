@@ -1,0 +1,13 @@
+<div class="hero-list">
+  <h2>英雄列表</h2>
+  <ul class="list-group">
+    <li
+      *ngFor="let hero of heroes"
+      class="list-group-item"
+      [class.active]="selectedId === hero.id"
+      (click)="clickItem(hero.id)"
+    >
+      {{ hero.name }}
+    </li>
+  </ul>
+</div>

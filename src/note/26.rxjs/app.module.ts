@@ -4,19 +4,17 @@ import { NgModule} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-import { NotFoundComponent } from './views/not-found/not-found.component';
-import {HeroModule} from './modules/hero/hero.module';
-import {CrisisModule} from './modules/crisis/crisis.module';
+import { RxjsDemo1Component } from './components/rxjs-demo1/rxjs-demo1.component';
+import { GithubProjectComponent } from './components/github-project/github-project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
+    RxjsDemo1Component,
+    GithubProjectComponent,
   ],
   imports: [
     BrowserModule,
-    HeroModule,
-    CrisisModule,
     AppRoutingModule,
     FormsModule
   ],
