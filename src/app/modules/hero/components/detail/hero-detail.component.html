@@ -1,1 +1,11 @@
-<p>{{ hero.name }}</p>
+<div>
+  <h4>英雄详情</h4>
+  <div *ngIf="hero">
+    <h5>id: {{ hero.id }}</h5>
+    <h5>name: {{ hero.name }}</h5>
+  </div>
+  <!-- 编程式跳转 -->
+  <button class="btn btn-primary btn-sm" (click)="back(hero.id)">编程式跳转, back</button><br/>
+  <!-- 声明式跳转 -->
+  <button class="btn btn-primary btn-sm" [routerLink]="['/hero/list', {id: hero.id}]">声明式跳转, back</button>
+</div>

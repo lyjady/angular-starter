@@ -1,13 +1,4 @@
-<div class="hero-list">
+<div>
   <h2>危机中心</h2>
-  <ul class="list-group">
-    <li
-      *ngFor="let crisis of crises"
-      class="list-group-item"
-      [class.active]="selectedId === crisis.id"
-      (click)="clickItem(crisis.id)"
-    >
-      {{ crisis.name }}
-    </li>
-  </ul>
+  <router-outlet></router-outlet>
 </div>

@@ -12,4 +12,8 @@ export class CrisisService {
   getCrises(): Crisis[] {
     return CRISES;
   }
+
+  getCrisis(id: number | string) {
+    return this.getCrises().find(item => item.id == id)
+  }
 }

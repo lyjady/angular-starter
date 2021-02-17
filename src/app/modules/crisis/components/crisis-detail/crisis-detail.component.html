@@ -1,0 +1,9 @@
+<div>
+  <h5>危机详情</h5>
+  <div *ngIf="crisis">
+    <h5>id: {{ crisis.id }}</h5>
+    <h5>name: {{ crisis.name }}</h5>
+  </div>
+  <!-- 返回上级的相对路径 -->
+  <button class="btn btn-success btn-sm" routerLink="../">返回</button>
+</div>

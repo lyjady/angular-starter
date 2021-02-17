@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Hero} from '../../type/hero';
 import {HeroService} from '../../service/hero.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-hero-list',
   templateUrl: './hero-list.component.html',
-  styleUrls: ['./hero-list.component.scss']
+  styleUrls: ['./hero-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroListComponent implements OnInit {
 
@@ -14,8 +15,10 @@ export class HeroListComponent implements OnInit {
 
   selectedId: number
 
-  constructor(private heroService: HeroService, private router: Router) {
+  constructor(private heroService: HeroService, private router: Router, private route: ActivatedRoute) {
     this.heroes = heroService.getHeroes()
+    this.selectedId = +route.snapshot.paramMap.get('id');
+
   }
 
   ngOnInit(): void {
