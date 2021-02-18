@@ -7,6 +7,8 @@ import {FormsModule} from '@angular/forms';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import {HeroModule} from './modules/hero/hero.module';
 import {CrisisModule} from './modules/crisis/crisis.module';
+import {AdminModule} from './modules/admin/admin.module';
+import {AuthModule} from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import {CrisisModule} from './modules/crisis/crisis.module';
     BrowserModule,
     HeroModule,
     CrisisModule,
+    AdminModule,
+    AuthModule,
     AppRoutingModule,
     FormsModule
   ],

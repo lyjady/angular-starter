@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {NotFoundComponent} from './views/not-found/not-found.component';
+import {ComposeMessageComponent} from './modules/crisis/components/compose-message/compose-message.component';
 
 
 const routes: Routes = [
@@ -8,6 +9,11 @@ const routes: Routes = [
     // 如果没有一个路径能够匹配到路由则显示默认页面
     path: '**',
     component: NotFoundComponent
+  },
+  {
+    path: 'message',
+    component: ComposeMessageComponent,
+    outlet: 'popup'
   }
 ];
 
