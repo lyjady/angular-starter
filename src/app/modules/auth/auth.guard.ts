@@ -19,9 +19,22 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       return true;
     }
     this.loginService.redirectUrl = state.url
-    this.router.navigate(['/login']).then()
-    console.log('canActive');
-    return false
+    // navigate跳转
+    // this.router.navigate(['/login'], {
+    //   queryParams: {name: 'Jack', age: 14},
+    //   fragment: 'QueryParam'
+    // }).then()
+    // console.log('canActive');
+    // return false
+    // 返回UrlTree跳转
+    // 设置跳转时的查询参数与片段
+    return this.router.createUrlTree(['/login'], {
+      queryParams: {
+        name: 'Jack',
+        age: 13
+      },
+      fragment: 'Fragment'
+    })
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HeroListComponent} from './components/list/hero-list.component';
 import {HeroDetailComponent} from './components/detail/hero-detail.component';
+import {HeroResolveService} from './service/hero-resolve.service';
 
 // 声明路由路径与组件之间的映射关系
 const routes: Routes = [
@@ -12,7 +13,18 @@ const routes: Routes = [
   {
     // 路由传参
     path: 'hero/detail/:id',
-    component: HeroDetailComponent
+    component: HeroDetailComponent,
+    resolve: {
+      hero: HeroResolveService
+    },
+    data: {
+      name: 'IconMan'
+    }
+  },
+  {
+    path: '',
+    redirectTo: 'hero/list',
+    pathMatch: 'full'
   }
 ];
 

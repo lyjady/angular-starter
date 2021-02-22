@@ -9,7 +9,7 @@ import {AuthGuard} from '../auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     // 设置路由守卫, 只有在canActivate属性里面全部的对象的canActivate()返回true时才会允许进入该路由
     canActivate: [AuthGuard],

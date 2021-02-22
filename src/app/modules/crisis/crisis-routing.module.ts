@@ -5,11 +5,12 @@ import {CrisisListComponent} from './components/crisis-list/crisis-list.componen
 import {CrisisCenterHomeComponent} from './components/crisis-center-home/crisis-center-home.component';
 import {CrisisDetailComponent} from './components/crisis-detail/crisis-detail.component';
 import {ComposeMessageComponent} from './components/compose-message/compose-message.component';
+import {CrisisGuard} from '../auth/crisis.guard';
 
 
 const routes: Routes = [
   {
-    path: 'crisis',
+    path: '',
     component: CrisisCenterComponent,
     children: [
       {
@@ -18,7 +19,9 @@ const routes: Routes = [
         children: [
           {
             path: ':id',
-            component: CrisisDetailComponent
+            component: CrisisDetailComponent,
+            // 注册该守卫
+            canDeactivate: [CrisisGuard]
           },
           {
             path: '',

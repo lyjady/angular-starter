@@ -18,8 +18,6 @@ import {AuthModule} from './modules/auth/auth.module';
   imports: [
     BrowserModule,
     HeroModule,
-    CrisisModule,
-    AdminModule,
     AuthModule,
     AppRoutingModule,
     FormsModule

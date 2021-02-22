@@ -12,7 +12,16 @@ export class LoginComponent implements OnInit {
 
   isLogin: boolean
 
+  name: string
+
+  age: number
+
+  fragment: string
+
   constructor(private loginService: LoginService, private router: Router) {
+    this.name = loginService.name
+    this.age = loginService.age
+    this.fragment = loginService.fragment
     this.isLogin = this.loginService.isLogin
   }
 
@@ -21,8 +30,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login().subscribe(() => {
-      console.log('login...')
-      this.router.navigate([this.loginService.redirectUrl]).then()
+      console.log('login...' + this.loginService.redirectUrl)
+      // 路由跳转时保留查询参数与片段
+      this.router.navigate([this.loginService.redirectUrl], {
+        queryParamsHandling: 'preserve',
+        preserveFragment: true
+      }).then()
     })
   }
 }

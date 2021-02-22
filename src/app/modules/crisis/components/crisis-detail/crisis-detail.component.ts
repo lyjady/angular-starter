@@ -1,7 +1,7 @@
 import {AfterContentChecked, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Crisis} from '../../type/crisis';
 import {CrisisService} from '../../service/crisis.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, CanDeactivate} from '@angular/router';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -32,5 +32,9 @@ export class CrisisDetailComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
     console.log('checked')
+  }
+
+  canDeactivate() {
+    return window.confirm('确定要离开？')
   }
 }

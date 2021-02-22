@@ -14,7 +14,11 @@ export class HeroDetailComponent implements OnInit {
   hero: Hero
 
   constructor(private route: ActivatedRoute, private heroService: HeroService, private router: Router) {
-    route.params.subscribe(value => this.hero = heroService.getHero(value.id))
+    // route.data可以取到路由守卫resolve返回的值, 还可以获取到在路由对象中配置的data的属性值
+    route.data.subscribe(value => {
+      console.log(value)
+      this.hero = value.hero
+    })
   }
 
   ngOnInit(): void {
