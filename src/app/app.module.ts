@@ -3,24 +3,23 @@ import { NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule} from '@angular/forms';
-import { NotFoundComponent } from './views/not-found/not-found.component';
-import {HeroModule} from './modules/hero/hero.module';
-import {CrisisModule} from './modules/crisis/crisis.module';
-import {AdminModule} from './modules/admin/admin.module';
-import {AuthModule} from './modules/auth/auth.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PagesModule} from './modules/pages/pages.module';
+import { NameEditorComponent } from './components/name-editor/name-editor.component';
+import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
+    NameEditorComponent,
+    ProfileEditorComponent,
   ],
   imports: [
     BrowserModule,
-    HeroModule,
-    AuthModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    PagesModule
   ],
   bootstrap: [AppComponent]
 })

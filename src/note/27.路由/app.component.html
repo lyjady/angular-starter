@@ -1,0 +1,10 @@
+<div>
+  <a routerLink="/hero/list" routerLinkActive="active">英雄列表</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a routerLink="/crisis" routerLinkActive="active">危机中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a [routerLink]="[{outlets: {popup: 'message'}}]" routerLinkActive="active">联系中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a routerLink="/admin" routerLinkActive="active">控制台</a>
+  <hr>
+  <router-outlet></router-outlet>
+  <!-- 多重路由, 与主路由之间相互隔离可以一起显示 -->
+  <router-outlet name="popup"></router-outlet>
+</div>

@@ -1,0 +1,9 @@
+<div>
+  <label>
+    name:
+    <!-- 将表单项与FormControl绑定 -->
+    <input type="text" [formControl]="name" />
+  </label><br/>
+  {{ name.value }}<br/>
+  <button class="btn btn-outline-primary btn-sm" (click)="setFormControlValue()">setValue</button>
+</div>

@@ -1,0 +1,42 @@
+<div class="profile-editor">
+  <!-- 为当前表单绑定表单组, 绑定提交事件 -->
+  <form [formGroup]="profile" (ngSubmit)="submit()">
+    <label class="d-block">
+      First Name:
+      <input type="text" formControlName="firstname" />
+    </label>
+    <label class="d-block">
+      Last Name:
+      <input type="text" formControlName="lastname" />
+    </label>
+    <label class="d-block">
+      Sex:
+      <input type="text" formControlName="sex" />
+    </label>
+    <!-- 绑定被嵌套的表单 -->
+    <div formGroupName="address">
+      <label class="d-block">
+        Province:
+        <input type="text" formControlName="province" />
+      </label>
+      <label class="d-block">
+        City:
+        <input type="text" formControlName="city" />
+      </label>
+      <label class="d-block">
+        Area:
+        <input type="text" formControlName="area" />
+      </label>
+    </div>
+    <!-- 使用FormArray动态的添加表单项 -->
+    <div formArrayName="aliases">
+      <label class="d-block" *ngFor="let item of aliases.controls; let i = index">
+        {{ i }}:
+        <input type="text" [formControlName]="i" />
+      </label>
+    </div>
+    <button class="btn btn-success" type="submit">提交</button>
+  </form>
+  <button class="btn btn-success" (click)="patchValue()">patch value</button>
+  <button class="btn btn-success" (click)="addAliases()">push aliases</button>
+</div>
