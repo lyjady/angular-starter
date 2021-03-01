@@ -1,0 +1,47 @@
+<div class="validation">
+  <form [formGroup]="formGroup" (ngSubmit)="submit()">
+    <label class="d-block">
+      firstname:
+      <input type="text" formControlName="firstname" />
+    </label>
+    <!-- Angular的每个AbstractControl都有一个表单的状态, 每次对表单的操作都会改变这个状态, 状态会以className的形式表示出来 -->
+    <!-- 每个Control都可以通过制定的属性来查看Control当前是否处于该状态 -->
+    <div class="alert alert-danger" *ngIf="firstname.dirty && firstname.errors as errors">
+      <div *ngIf="errors.required">请填写firstname</div>
+      <div *ngIf="errors.minlength">长度不能小于4</div>
+      <div *ngIf="errors.nameError">{{ errors.nameError }}</div>
+    </div>
+    <label class="d-block">
+      lastname:
+      <input type="text" formControlName="lastname" />
+    </label>
+    <label class="d-block">
+      mobile:
+      <input type="text" formControlName="mobile" />
+    </label>
+    <div class="alert alert-danger" *ngIf="mobile.dirty && mobile.errors as errors">
+      <div *ngIf="errors.pattern">请填写合法的手机号码</div>
+      <div *ngIf="errors.exist">{{ errors.exist }}</div>
+    </div>
+    <div formGroupName="passwordGroup">
+      <label class="d-block">
+        password:
+        <input type="text" formControlName="password" />
+      </label>
+      <div class="alert alert-danger" *ngIf="password.dirty && password.errors as errors">
+        <div *ngIf="errors.required">请填写password</div>
+      </div>
+      <label class="d-block">
+        confirmPassword:
+        <input type="text" formControlName="confirmPassword" />
+      </label>
+      <div class="alert alert-danger" *ngIf="confirmPassword.dirty && confirmPassword.errors as errors">
+        <div *ngIf="errors.required">请填写password</div>
+      </div>
+      <div class="alert alert-danger" *ngIf="passwordGroup.errors as errors">
+        <div *ngIf="errors.equal">{{ errors.equal }}</div>
+      </div>
+      <button class="btn btn-success btn-sm" type="submit">提交</button>
+    </div>
+  </form>
+</div>

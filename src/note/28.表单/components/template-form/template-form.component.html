@@ -1,0 +1,43 @@
+<div class="template">
+  <!-- 将ngForm实例赋予profileForm变量, profileForm就表示该表单对象 -->
+  <form #profileForm="ngForm" (ngSubmit)="submit(profileForm)" appPwdEqualValidation>
+    {{ profileForm.valid }}
+    <label class="d-block">
+      firstname:
+      <!-- 绑定模板的firstname属性, ngModel用于创建FormControl -->
+      <!-- 可以直接在模板上指定验证(响应式表单也行) -->
+      <!-- 将ngModel赋予模板变量 -->
+      <input type="text" required name="firstname" [(ngModel)]="profile.firstname" #firstname="ngModel"
+             appNameValidation="bob"/>
+    </label>
+    <div class="alert alert-danger" *ngIf="firstname.dirty && firstname.errors as errors">
+      <div *ngIf="errors.validation">{{ errors.validation }}</div>
+      <div *ngIf="errors.required">该字段是必填字段</div>
+    </div>
+    <label class="d-block">
+      lastname:
+      <input type="text" name="lastname" [(ngModel)]="profile.lastname"/>
+    </label>
+    <label class="d-block">
+      mobile:
+      <input type="text" name="mobile" [(ngModel)]="profile.mobile" #mobile="ngModel" required appHasMobileValidation [ngModelOptions]="{updateOn: 'blur'}"/>
+    </label>
+    <div class="alert alert-danger" *ngIf="mobile.dirty && mobile.errors as errors">
+      <div *ngIf="errors.required">请填写手机号</div>
+      <div *ngIf="errors.exist">{{ errors.exist }}</div>
+    </div>
+    <label class="d-block">
+      password:
+      <input type="text" minlength="4" name="password" [(ngModel)]="profile.password" #password="ngModel"/>
+    </label>
+    <label class="d-block">
+      confirmPassword:
+      <input type="text" name="confirmPassword" [(ngModel)]="profile.confirmPassword" #confirmPassword="ngModel"/>
+    </label>
+    <div class="alert alert-danger" *ngIf="profileForm.dirty && profileForm.errors as errors">
+      <div *ngIf="errors.equal">{{ errors.equal }}</div>
+    </div>
+    <button class="btn btn-success btn-sm" type="submit">提交</button>
+  </form>
+  <button class="btn btn-success btn-sm" (click)="reset(profileForm)">reset</button>
+</div>
