@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { HeroRoutingModule } from './hero-routing.module';
 import { HeroListComponent } from './hero-list/hero-list.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddHeroComponent } from './add-hero/add-hero.component';
 import { UpdateHeroComponent } from './update-hero/update-hero.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import { UpdateHeroComponent } from './update-hero/update-hero.component';
   imports: [
     CommonModule,
     FormsModule,
-    HeroRoutingModule
+    HeroRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [HeroListComponent]
 })

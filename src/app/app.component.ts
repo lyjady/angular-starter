@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {HeroService} from './modules/hero/service/hero.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,5 @@ export class AppComponent {
 
   title = 'Angular-Starter'
 
-  constructor() {}
+  constructor(private heroService: HeroService) {}
 }

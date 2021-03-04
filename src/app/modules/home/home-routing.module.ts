@@ -4,6 +4,7 @@ import {HomeHeaderComponent} from './home-header/home-header.component';
 import {HeroListComponent} from '../hero/hero-list/hero-list.component';
 import {AddHeroComponent} from '../hero/add-hero/add-hero.component';
 import {UpdateHeroComponent} from '../hero/update-hero/update-hero.component';
+import {LeaveAddHeroGuard} from '../hero/add-hero/service/leave-add-hero.guard';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
       {
         path: 'hero/add',
         component: AddHeroComponent,
+        canDeactivate: [LeaveAddHeroGuard],
         data: {
           title: '添加英雄',
           breadcrumb: ['首页', '添加英雄']
