@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {HeroService} from '../service/hero.service';
 
 @Component({
   selector: 'app-add-hero',
@@ -14,7 +15,7 @@ export class AddHeroComponent implements OnInit {
 
   submitted: boolean
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private heroService: HeroService) {
     this.formValues = this.fb.group({
       name: ['', [
         Validators.required,
@@ -89,6 +90,10 @@ export class AddHeroComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formValues.value);
+    console.log(this.formValues.valid);
+    if (this.formValues.valid) {
+      this.heroService.add(this.formValues.value).subscribe(value => console.log(value))
+    }
     this.submitted = true
     this.cancel()
   }

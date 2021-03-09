@@ -1,5 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import heroes, {Hero, HeroArg} from '../../../config/type';
+import {HeroService} from '../service/hero.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -9,28 +10,47 @@ import heroes, {Hero, HeroArg} from '../../../config/type';
 })
 export class HeroListComponent implements OnInit {
 
-  heroes: Hero[]
+  heroes: Hero[] = []
+
+  isLoading = false
 
   searchCondition: HeroArg;
 
-  constructor() {
-    this.heroes = heroes
+  constructor(private heroService: HeroService, private changeDetectorRef: ChangeDetectorRef) {
     this.searchCondition = {
       name: '',
       job: '',
-      sort: 'asc'
+      sort: 'desc'
     };
+    this.getList()
   }
 
   ngOnInit(): void {
   }
 
   search(): void {
-    console.log(this.searchCondition)
+    this.getList()
   }
 
   trackBy(hero: Hero) {
     return hero.id
   }
 
+  getList() {
+    this.isLoading = true
+    this.heroService.heroes(this.searchCondition).subscribe((value) => {
+      this.heroes = value
+      this.isLoading = false
+      this.changeDetectorRef.markForCheck()
+    })
+  }
+
+  reset() {
+    this.searchCondition = {
+      name: '',
+      job: '',
+      sort: 'desc'
+    }
+    this.getList()
+  }
 }

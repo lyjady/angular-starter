@@ -7,10 +7,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddHeroComponent } from './add-hero/add-hero.component';
 import { UpdateHeroComponent } from './update-hero/update-hero.component';
 import {HttpClientModule} from '@angular/common/http';
+import {PagesModule} from '../pages/pages.module';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
-  declarations: [HeroListComponent, AddHeroComponent, UpdateHeroComponent],
+  declarations: [HeroListComponent, AddHeroComponent, UpdateHeroComponent, LoadingComponent],
   imports: [
     CommonModule,
     FormsModule,
