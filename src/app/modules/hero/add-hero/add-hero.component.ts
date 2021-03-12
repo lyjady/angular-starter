@@ -92,7 +92,7 @@ export class AddHeroComponent implements OnInit {
     console.log(this.formValues.value);
     console.log(this.formValues.valid);
     if (this.formValues.valid) {
-      this.heroService.add(this.formValues.value).subscribe(value => console.log(value))
+      this.heroService.add(this.formValues.value).subscribe(() => alert('添加成功'))
     }
     this.submitted = true
     this.cancel()

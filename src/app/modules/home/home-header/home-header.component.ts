@@ -20,12 +20,12 @@ export class HomeHeaderComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     router.events.pipe(
       filter(event => event instanceof NavigationEnd),
-      switchMap(() => combineLatest(this.route.firstChild.data, userService.user$))
-    ).subscribe(([data, user]) => {
+      switchMap(() => this.route.firstChild.data)
+    ).subscribe(data => {
       if (data.breadcrumb?.length) {
         this.breadcrumb = data.breadcrumb
       }
-      this.currentUser = user
+      this.userService.user$.subscribe(value => this.currentUser = value)
     })
   }
 

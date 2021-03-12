@@ -19,4 +19,9 @@ export class AccountService {
     return this.httpClient.post(this.prefixUrl + '/login', arg)
       .pipe(map((response: Base<any>) => response.data))
   }
+
+  account(): Observable<LoginType> {
+    return this.httpClient.get(this.prefixUrl + '/account')
+      .pipe(map((response: Base<any>) => response.data))
+  }
 }

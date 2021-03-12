@@ -5,6 +5,8 @@ import {AccountService} from '../../services/acount.service';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
+import {Token} from '@angular/compiler';
+import {TOKEN} from '../../config/constant';
 
 @Component({
   selector: 'app-login',
@@ -25,9 +27,13 @@ export class LoginComponent implements OnInit {
     if (loginForm.valid) {
       this.accountService.login(loginForm.value).subscribe(value => {
         const { token, user } = value
-        localStorage.setItem('h-auth', token)
+        localStorage.setItem(TOKEN, token)
         this.userService.setUser(user)
-        this.router.navigate(['/home/hero/list']).then()
+        if (this.userService.redirectUrl) {
+          this.router.navigate([this.userService.redirectUrl]).then()
+        } else {
+          this.router.navigate(['/home/hero/list']).then()
+        }
       })
     }
   }

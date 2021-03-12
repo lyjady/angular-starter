@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {HeroService} from './modules/hero/service/hero.service';
+import {NavigationStart, Router} from '@angular/router';
+import {filter, map, switchMap} from 'rxjs/operators';
+import {ContextService} from './services/context.service';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +13,10 @@ export class AppComponent {
 
   title = 'Angular-Starter'
 
-  constructor(private heroService: HeroService) {}
+  constructor(private contextService: ContextService, private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart),
+      switchMap(() => this.contextService.setContext()),
+    ).subscribe()
+  }
 }

@@ -11,6 +11,8 @@ export class UserService {
 
   readonly user$ = this.sub.asObservable()
 
+  redirectUrl: string
+
   constructor() { }
 
   setUser(user: Hero) {
