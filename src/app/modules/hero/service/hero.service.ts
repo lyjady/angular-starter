@@ -28,4 +28,17 @@ export class HeroService {
     return this.httpClient.post(this.prefixUrl + '/add', hero)
       .pipe(map((response: Base<any>) => response.data))
   }
+
+  hero(id: string): Observable<Hero> {
+    return this.httpClient.get(`${this.prefixUrl}/detail/${id}`)
+      .pipe(map((value:Base<any>) => value.data))
+  }
+
+  updateHero(hero: Hero, id: string): Observable<Base<any>> {
+    return this.httpClient.patch<Base<any>>(`${this.prefixUrl}/modify/${id}`, hero)
+  }
+
+  remove(id: string): Observable<Base<any>> {
+    return this.httpClient.delete<Base<any>>(`${this.prefixUrl}/remove/${id}`)
+  }
 }

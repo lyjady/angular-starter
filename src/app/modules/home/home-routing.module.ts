@@ -6,6 +6,7 @@ import {AddHeroComponent} from '../hero/add-hero/add-hero.component';
 import {UpdateHeroComponent} from '../hero/update-hero/update-hero.component';
 import {LeaveAddHeroGuard} from '../hero/add-hero/service/leave-add-hero.guard';
 import {HeroGuard} from '../../guard/hero.guard';
+import {UserCenterComponent} from '../user/components/user-center/user-center.component';
 
 
 const routes: Routes = [
@@ -33,13 +34,24 @@ const routes: Routes = [
         }
       },
       {
-        path: 'hero/update',
+        path: 'hero/update/:id',
         component: UpdateHeroComponent,
+        canDeactivate: [LeaveAddHeroGuard],
         canActivate: [HeroGuard],
         data: {
           title: '更新英雄',
           breadcrumb: ['首页', '更新英雄'],
           auths: ['admin']
+        }
+      },
+      {
+        path: 'user-center',
+        component: UserCenterComponent,
+        canActivate: [HeroGuard],
+        data: {
+          title: '英雄中心',
+          breadcrumb: ['首页', '英雄中心'],
+          auths: ['user', 'admin']
         }
       },
       {

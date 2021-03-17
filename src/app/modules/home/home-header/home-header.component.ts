@@ -4,6 +4,7 @@ import {filter, map, switchMap} from 'rxjs/operators';
 import {Hero} from '../../../type/type';
 import {UserService} from '../../../services/user.service';
 import {combineLatest} from 'rxjs';
+import {TOKEN} from '../../../config/constant';
 
 @Component({
   selector: 'app-home-header',
@@ -32,4 +33,13 @@ export class HomeHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout() {
+    const confirm = window.confirm('确定要退出登录？')
+    if (confirm) {
+      this.userService.logout().subscribe(() => {
+        this.userService.setUser(null)
+        localStorage.removeItem(TOKEN)
+      })
+    }
+  }
 }

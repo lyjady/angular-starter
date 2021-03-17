@@ -9,10 +9,11 @@ import { UpdateHeroComponent } from './update-hero/update-hero.component';
 import {HttpClientModule} from '@angular/common/http';
 import {PagesModule} from '../pages/pages.module';
 import { LoadingComponent } from './loading/loading.component';
+import { AuthDirective } from './directives/auth.directive';
 
 
 @NgModule({
-  declarations: [HeroListComponent, AddHeroComponent, UpdateHeroComponent, LoadingComponent],
+  declarations: [HeroListComponent, AddHeroComponent, UpdateHeroComponent, LoadingComponent, AuthDirective],
   imports: [
     CommonModule,
     FormsModule,

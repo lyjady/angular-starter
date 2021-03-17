@@ -53,4 +53,14 @@ export class HeroListComponent implements OnInit {
     }
     this.getList()
   }
+
+  remove(id: string) {
+    const confirm = window.confirm('确定要删除该英雄？')
+    if (confirm) {
+      this.heroService.remove(id).subscribe(() => {
+        alert('删除成功')
+        this.getList()
+      })
+    }
+  }
 }
