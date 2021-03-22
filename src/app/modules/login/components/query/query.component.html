@@ -1,0 +1,7 @@
+<button class="btn btn-primary" (click)="isOpen = !isOpen">toggle</button>
+<div [@query]="isOpen ? 'open' : 'close'">
+  <div style="width: 100px; height: 100px; background-color: skyblue" class="one"></div>
+  <div style="width: 100px; height: 100px; background-color: deeppink" class="two"></div>
+  <div style="width: 100px; height: 100px; background-color: rebeccapurple" class="three"></div>
+  <div style="width: 100px; height: 100px; background-color: greenyellow" class="four"></div>
+</div>

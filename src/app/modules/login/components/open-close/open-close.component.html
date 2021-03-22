@@ -1,0 +1,4 @@
+<button class="btn btn-primary" (click)="isOpen = !isOpen">toggle</button>
+<div [@openClose]="isOpen ? 'open' : 'close'" (@openClose.start)="animationEventStart($event)" (@openClose.done)="animationEventEnd($event)">
+
+</div>
